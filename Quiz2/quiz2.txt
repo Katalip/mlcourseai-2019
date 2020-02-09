@@ -1,0 +1,100 @@
+1. Select the correct statements about ordinary least squares (OLS):
+
++ OLS is a method for estimating the unknown parameters in a linear regression model.
+OLS works as follows: minimizing the sum of the differences between the observed dependent variable in the given dataset and the square of the product of the predicted variable and its weight.
++ OLS provides an estimator with the lowest variance among all linear and unbiased estimators when errors are homoscedastic, uncorrelated and have zero expectation.
+OLS works as follows: minimizing the sum of the absolute value of the differences between the observed dependent variable in the given dataset and the product of the predicted variable and its weight.
+
+2. Why wouldn't you always use the closed-form solution for OLS: w=(XTX)−1XTy (see Topic 4, part 1 for problem statement and designations)?
+
++it's computationally inefficient as compared to numeric optimization methods
++it's computationally unstable in case of multicollinearity, i.e. when determinant of XTX is close to zero
+numeric optimization methods typically yield a better solution in terms of mean squared error
+multiplying two square matrices is an operation with O(n4) complexity, where n is the number of rows/columns
+For discussions, please stick to ODS Slack, channel #mlcourse_ai_news, pinned thread #quiz2_q1-5
+
+3. Select a correct statement about maximum likelihood estimation:
+
+OLS is the maximum likelihood estimator for any linear machine learning model.
++OLS is the maximum likelihood estimator, only if the errors are normally distributed.
+Maximum likelihood method applies only to samples with normal distribution.
+For discussions, please stick to ODS Slack, channel #mlcourse_ai_news, pinned thread #quiz2_q1-5
+
+4. Suppose, Lerbon Jasem is at rest wandering around a park. He decides to play a lottery where one needs to score 9 times out of 10 basketball penalty shoots to win a bunny. Lerbon manages to do that from the 3rd attempt: first he scored 6, then 8, and finally, 9. Suppose, the number of successes is governed by Binomial distribution Bin(n,θ)=(nk)θk(1−θ)n−k, i.e. there are n=10 trials (shoots) and θ is an estimator for Lerbon's unknown true probability of success (scoring in a single shot) p. Moreover, we assume that scoring in each and every shoot is independent of other shoots (which probably didn't hold for Lerbon when he got irritated in the first shoot-out series, but still).
+
+What is the partial derivative of log likelihood function with respect to θ? What's the value of Maximum Likelihood Estimator of p - θMLE?
+
++23θ−71−θ, 0.7(6)
+23θ+71−θ, 1.4375
+23θ−71−θ, 0.8
+23θ+71−θ, 0.7(6)
+For discussions, please stick to ODS Slack, channel #mlcourse_ai_news, pinned thread #quiz2_q1-5
+
+5. Why should one regularize a linear regression model?
+
++To avoid overfitting
+?To reduce variance of model predictions
+To generalize better to future data
++To tackle multicollinearity
+For discussions, please stick to ODS Slack, channel #mlcourse_ai_news, pinned thread #quiz2_q1-5
+
+6. Which of the following evaluation metrics should NOT be applied in case of logistic regression output compared with the target?
+
+Accuracy score
+Logloss
++Mean Squared Error
+ROC AUC
+For discussions, please stick to ODS Slack, channel #mlcourse_ai_news, pinned thread #quiz2_q6-10
+
+7. Which of the following approaches do we use to fit logistic regression parameters to the data in hand?
+
+Least Square Error
++Maximum Likelihood Estimation
+The margin of classification
+The Jaccard index
+
+8. Let's analyze the logarithmic loss function as derived in the article in terms of margin:
+
+L(M)=ln(1+e−M)
+_(here we have natural logarithm, but the base is not that important due to logab=lnblna, i.e. some base a different from e will only result in a constant multiplier 1lna which doesn't change the analysis)_
+
+Select all correct statements:
+
++the model is penalized (meaning that the loss is positive) even in case when a training instance is correctly classified
++logarithmic loss is a strictly decreasing function of margin M
++derivative dLdM can be interpreted in terms of margin M: dLdM=−σ(−M)
++second derivative d2LdM2 is strictly positive, meaning that L is convex
+For discussions, please stick to ODS Slack, channel #mlcourse_ai_news, pinned thread #quiz2_q6-10
+
+9. Suppose you train a logistic regression classifier:
+
+P(y=1∣X)=σ(w0+w1x1+w2x2)
+a(X)=sign(P(y=1∣X)−0.5),
+meaning that predicted probability P(y=1∣X) is compared with 0.5, and depending on that either +1 or -1 is returned.
+
+Also we know that w0=3,w1=0,w2=−1.
+
+Which of the following figures represents the decision boundary of the given classifier?
+
+A
+B
++C
+D
+For discussions, please stick to ODS Slack, channel #mlcourse_ai_news, pinned thread #quiz2_q6-10
+
+
+
+10. In this question, we'll be working with Sklearn's bias-variance decomposition example. There they compare a decision tree regressor and bagging over the same trees. In our case, we'll compare 4 decision trees - with maximal depths of 1, 2, 5, and 10 (in all cases random_state shall be set to 17). So you need to take the same code from the example and change the estimators variable.
+
+Your task is to:
+
+read about bias-variance decomposition in the mlcourse.ai article
+understand the code form the mentioned sklearn's example
+understand what you changed in the code and how it affected the figures built in the end of the example
+When you're done with that, choose all correct statements:
+
+Variance always increases with increased max_depth
++Minimal MSE is achieved when max_depth is set to 5
+Minimal MSE is achieved when bias is also minimal
++Minimal MSE is achieved when variance is also minimal
++The tree with max_depth=10 is overfitted
